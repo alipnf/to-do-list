@@ -19,9 +19,11 @@ export default function Navbar() {
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-9">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">To Do List</a>
+        <a className="btn btn-ghost text-lg md:text-base xl:text-xl">
+          To Do List
+        </a>
       </div>
       <div className="flex-none">
         <label className="swap swap-rotate">
