@@ -1,12 +1,15 @@
 export default function AddTask() {
   return (
-    <form className="mt-3 flex items-center gap-3">
+    <form className="mt-4 flex items-center gap-3 md:mt-5 lg:mt-8">
       <input
         type="text"
         placeholder="your task"
-        className="input input-bordered input-primary w-full max-w-xs"
+        className="input input-sm input-bordered input-primary w-full max-w-xl md:input-md xl:input-lg"
       />
-      <button className="btn btn-primary" type="submit">
+      <button
+        className="btn btn-primary btn-sm md:btn-md xl:btn-lg"
+        type="submit"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1.2rem"
