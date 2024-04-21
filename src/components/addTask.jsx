@@ -1,4 +1,4 @@
-export default function NewTask() {
+export default function AddTask() {
   return (
     <form className="mt-3 flex items-center gap-3">
       <input
