@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function TaskList({ list }) {
+export default function TaskList({ list, deleteList }) {
   const [checkedItems, setCheckedItems] = useState({});
   const [tasks, setTasks] = useState(list);
 
@@ -20,9 +20,7 @@ export default function TaskList({ list }) {
   };
 
   const handleDelete = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
+    deleteList(index);
   };
 
   return (
