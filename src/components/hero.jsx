@@ -16,11 +16,21 @@ export default function Hero() {
     setTaskList(updatedTasks);
   };
 
+  const handleUpdate = (index, newValue) => {
+    const updatedTasks = [...taskList];
+    updatedTasks[index] = newValue;
+    setTaskList(updatedTasks);
+  };
+
   return (
     <div className="min-h-screen bg-base-200 px-6">
       <div className="flex flex-col justify-center">
         <AddTask addTaskToList={addTaskToList} />
-        <TaskList list={taskList} deleteList={handleDelete} />
+        <TaskList
+          list={taskList}
+          deleteList={handleDelete}
+          updateList={handleUpdate}
+        />
       </div>
     </div>
   );
