@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Button from "./button";
 
 export default function TaskList({ list, deleteList, updateList }) {
   const [checkedItems, setCheckedItems] = useState({});
@@ -46,26 +47,18 @@ export default function TaskList({ list, deleteList, updateList }) {
               </div>
 
               <div className="flex gap-2">
-                <button
-                  className="btn btn-warning  btn-sm"
-                  onClick={() => {
-                    const newTask = prompt("Enter updated task:", tasks[index]);
-                    if (newTask !== null && newTask.trim() !== "") {
-                      handleUpdate(index, newTask.trim());
-                    }
-                  }}
-                >
-                  Update
-                </button>
-
-                <button
-                  className="btn btn-error btn-sm"
-                  onClick={() => {
-                    handleDelete(index);
-                  }}
-                >
-                  Delete
-                </button>
+                <Button
+                  type={"edit"}
+                  index={index}
+                  tasks={tasks}
+                  handle={handleUpdate}
+                />
+                <Button
+                  type={"delete"}
+                  index={index}
+                  tasks={tasks}
+                  handle={handleDelete}
+                />
               </div>
             </label>
           </li>

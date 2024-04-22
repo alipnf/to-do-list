@@ -17,7 +17,7 @@ export default function AddTask({ addTaskToList }) {
   return (
     <div>
       <form
-        className="mt-4 flex w-full items-center justify-center gap-3 md:mt-5 lg:mt-8"
+        className="mt-4 flex w-full items-center justify-center gap-3 md:mt-5 lg:mt-8 lg:justify-between xl:px-[25%]"
         onSubmit={handleSubmit}
       >
         <input
