@@ -1,11 +1,14 @@
 import { useState } from "react";
 import AddTask from "./addTask";
 import TaskList from "./taskList";
+import Complete from "./complete";
 
 export default function Hero() {
   const [taskList, setTaskList] = useState([]);
   const addTaskToList = (newTask) => {
-    if (newTask != "") {
+    console.log(newTask);
+
+    if (newTask.text !== "") {
       return setTaskList([...taskList, newTask]);
     }
   };
@@ -18,7 +21,7 @@ export default function Hero() {
 
   const handleUpdate = (index, newValue) => {
     const updatedTasks = [...taskList];
-    updatedTasks[index] = newValue;
+    updatedTasks[index].text = newValue;
     setTaskList(updatedTasks);
   };
 
@@ -32,6 +35,8 @@ export default function Hero() {
           updateList={handleUpdate}
         />
       </div>
+
+      <Complete list={taskList} />
     </div>
   );
 }

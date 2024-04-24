@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Button from "./button";
 
 export default function TaskList({ list, deleteList, updateList }) {
-  const [checkedItems, setCheckedItems] = useState({});
   const [tasks, setTasks] = useState(list);
 
   // Update tasks when list prop changes
@@ -11,7 +10,10 @@ export default function TaskList({ list, deleteList, updateList }) {
   }, [list]);
 
   const handleCheckboxChange = (index) => {
-    setCheckedItems({ ...checkedItems, [index]: !checkedItems[index] });
+    const updatedTasks = [...tasks];
+    updatedTasks[index].status =
+      updatedTasks[index].status === "unfinished" ? "complete" : "unfinished";
+    setTasks(updatedTasks); // Update tasks
   };
 
   const handleUpdate = (index, newValue) => {
@@ -21,7 +23,6 @@ export default function TaskList({ list, deleteList, updateList }) {
   const handleDelete = (index) => {
     deleteList(index);
   };
-
   return (
     <div className="mt-4 lg:mt-6 xl:mt-8 xl:px-[25%]">
       <ul>
@@ -32,17 +33,15 @@ export default function TaskList({ list, deleteList, updateList }) {
                 <input
                   type="checkbox"
                   className="checkbox"
-                  checked={checkedItems[index] || false}
                   onChange={() => handleCheckboxChange(index)}
                 />
                 <span
                   style={{
-                    textDecoration: checkedItems[index]
-                      ? "line-through"
-                      : "none",
+                    textDecoration:
+                      item.status == "complete" ? "line-through" : "none",
                   }}
                 >
-                  {item}
+                  {item.text}
                 </span>
               </div>
 

@@ -1,17 +1,16 @@
 import { useState } from "react";
 
 export default function AddTask({ addTaskToList }) {
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState({ text: "", status: "unfinished" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addTaskToList(task);
-    setTask("");
-    console.log(task);
+    setTask({ text: "", status: "unfinished" });
   };
 
   const handleChange = (e) => {
-    setTask(e.target.value);
+    setTask({ ...task, text: e.target.value });
   };
 
   return (
@@ -21,7 +20,7 @@ export default function AddTask({ addTaskToList }) {
         onSubmit={handleSubmit}
       >
         <input
-          value={task}
+          value={task.text}
           type="text"
           placeholder="your task"
           className="input input-sm input-bordered input-primary w-full max-w-xl md:input-md xl:input-lg"

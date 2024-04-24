@@ -6,7 +6,7 @@ export default function Button({ type, index, tasks, handle }) {
         <button
           className="btn btn-warning  btn-sm"
           onClick={() => {
-            const newTask = prompt("Enter updated task:", tasks[index]);
+            const newTask = prompt("Enter updated task:", tasks[index].text);
             if (newTask !== null && newTask.trim() !== "") {
               handle(index, newTask.trim());
             }
