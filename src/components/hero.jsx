@@ -6,8 +6,6 @@ import Complete from "./complete";
 export default function Hero() {
   const [taskList, setTaskList] = useState([]);
   const addTaskToList = (newTask) => {
-    console.log(newTask);
-
     if (newTask.text !== "") {
       return setTaskList([...taskList, newTask]);
     }
@@ -25,9 +23,7 @@ export default function Hero() {
     setTaskList(updatedTasks);
   };
 
-  useEffect(() => {
-    console.log("Task list updated:", taskList);
-  }, [taskList]);
+  useEffect(() => {}, [taskList]);
 
   return (
     <div className="min-h-screen bg-base-200 px-6">

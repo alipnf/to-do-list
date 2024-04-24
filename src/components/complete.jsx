@@ -8,7 +8,6 @@ export default function Complete({ list }) {
       (item) => item.status === "complete",
     ).length;
     setCompleteList(completeCount);
-    console.log("useEffect di Complete terpanggil");
   }, [list]);
 
   return (
