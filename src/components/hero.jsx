@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddTask from "./addTask";
 import TaskList from "./taskList";
 import Complete from "./complete";
@@ -24,6 +24,10 @@ export default function Hero() {
     updatedTasks[index].text = newValue;
     setTaskList(updatedTasks);
   };
+
+  useEffect(() => {
+    console.log("Task list updated:", taskList);
+  }, [taskList]);
 
   return (
     <div className="min-h-screen bg-base-200 px-6">

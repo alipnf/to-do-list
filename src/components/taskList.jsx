@@ -13,7 +13,8 @@ export default function TaskList({ list, deleteList, updateList }) {
     const updatedTasks = [...tasks];
     updatedTasks[index].status =
       updatedTasks[index].status === "unfinished" ? "complete" : "unfinished";
-    setTasks(updatedTasks); // Update tasks
+    setTasks(updatedTasks);
+    updateList(index, updatedTasks[index].text);
   };
 
   const handleUpdate = (index, newValue) => {
@@ -23,6 +24,7 @@ export default function TaskList({ list, deleteList, updateList }) {
   const handleDelete = (index) => {
     deleteList(index);
   };
+
   return (
     <div className="mt-4 lg:mt-6 xl:mt-8 xl:px-[25%]">
       <ul>
@@ -34,11 +36,12 @@ export default function TaskList({ list, deleteList, updateList }) {
                   type="checkbox"
                   className="checkbox"
                   onChange={() => handleCheckboxChange(index)}
+                  checked={item.status === "complete"} // Set the checked attribute based on the status
                 />
                 <span
                   style={{
                     textDecoration:
-                      item.status == "complete" ? "line-through" : "none",
+                      item.status === "complete" ? "line-through" : "none",
                   }}
                 >
                   {item.text}
