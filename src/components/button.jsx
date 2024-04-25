@@ -27,7 +27,7 @@ export default function Button({ type, index, tasks, handle }) {
               d="M21.808 5.456a1.86 1.86 0 0 0-.46-.68l-2.15-2.15a1.86 1.86 0 0 0-.68-.46a2.1 2.1 0 0 0-2.31.46l-1.71 1.71v.05l-7.74 7.73a2.11 2.11 0 0 0-.61 1.48v2.17a2.12 2.12 0 0 0 2.11 2.11h2.17a2.07 2.07 0 0 0 1.48-.62l7.74-7.74l1.72-1.72c.202-.19.36-.422.46-.68a2 2 0 0 0 0-1.63zm-1.38 1.05a.56.56 0 0 1-.14.2l-1.22 1.22l-3-3l1.23-1.23a.64.64 0 0 1 .44-.18a.59.59 0 0 1 .23.05c.076.032.145.08.2.14l2.16 2.15a.69.69 0 0 1 .13.2a.59.59 0 0 1 0 .23a.6.6 0 0 1-.03.22"
             />
           </svg>
-          Edit
+          <p className="hidden md:flex">Edit</p>
         </button>
       ) : (
         <button className="btn btn-error btn-sm" onClick={() => handle(index)}>
@@ -42,7 +42,7 @@ export default function Button({ type, index, tasks, handle }) {
               d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"
             />
           </svg>
-          Delete
+          <p className="hidden md:flex">Delete</p>
         </button>
       )}
     </>
