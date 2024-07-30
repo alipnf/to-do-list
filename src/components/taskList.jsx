@@ -1,47 +1,35 @@
-import { useState, useEffect } from "react";
 import Button from "./button";
 
 export default function TaskList({ list, deleteList, updateList }) {
-  const [tasks, setTasks] = useState(list);
-
-  // Update tasks when list prop changes
-  useEffect(() => {
-    setTasks(list);
-  }, [list]);
-
-  const handleCheckboxChange = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].status =
-      updatedTasks[index].status === "unfinished" ? "complete" : "unfinished";
-    setTasks(updatedTasks);
-    updateList(index, updatedTasks[index].text);
+  const handleChecked = (item) => {
+    updateList(item.id, { ...item, complete: !item.complete });
   };
 
-  const handleUpdate = (index, newValue) => {
-    updateList(index, newValue);
+  const handleUpdate = (item) => {
+    const newText = prompt("Enter update task", item.text);
+    updateList(item.id, { ...item, text: newText });
   };
 
-  const handleDelete = (index) => {
-    deleteList(index);
+  const handleDelete = (id) => {
+    deleteList(id);
   };
 
   return (
     <div className="mt-4 lg:mt-6 xl:mt-8 xl:px-[25%]">
       <ul>
-        {tasks.map((item, index) => (
-          <li key={index} className="form-control">
+        {list.map((item) => (
+          <li key={item.id} className="form-control">
             <label className="label flex cursor-pointer justify-between ">
               <div className="flex justify-start gap-3">
                 <input
                   type="checkbox"
                   className="checkbox"
-                  onChange={() => handleCheckboxChange(index)}
-                  checked={item.status === "complete"} // Set the checked attribute based on the status
+                  onChange={() => handleChecked(item)}
                 />
                 <span
                   style={{
                     textDecoration:
-                      item.status === "complete" ? "line-through" : "none",
+                      item.complete === true ? "line-through" : "none",
                   }}
                 >
                   {item.text}
@@ -49,18 +37,8 @@ export default function TaskList({ list, deleteList, updateList }) {
               </div>
 
               <div className="flex gap-2">
-                <Button
-                  type={"edit"}
-                  index={index}
-                  tasks={tasks}
-                  handle={handleUpdate}
-                />
-                <Button
-                  type={"delete"}
-                  index={index}
-                  tasks={tasks}
-                  handle={handleDelete}
-                />
+                <Button type={"edit"} handle={() => handleUpdate(item)} />
+                <Button type={"delete"} handle={() => handleDelete(item.id)} />
               </div>
             </label>
           </li>

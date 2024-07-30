@@ -1,17 +1,9 @@
-export default function Button({ type, index, tasks, handle }) {
+export default function Button({ type, handle }) {
   const isEdit = type === "edit";
   return (
     <>
       {isEdit ? (
-        <button
-          className="btn btn-warning  btn-sm"
-          onClick={() => {
-            const newTask = prompt("Enter updated task:", tasks[index].text);
-            if (newTask !== null && newTask.trim() !== "") {
-              handle(index, newTask.trim());
-            }
-          }}
-        >
+        <button className="btn btn-warning  btn-sm" onClick={handle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.2rem"
@@ -30,7 +22,7 @@ export default function Button({ type, index, tasks, handle }) {
           <p className="hidden md:flex">Edit</p>
         </button>
       ) : (
-        <button className="btn btn-error btn-sm" onClick={() => handle(index)}>
+        <button className="btn btn-error btn-sm" onClick={handle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.2rem"
