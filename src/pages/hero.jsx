@@ -7,7 +7,9 @@ export default function Hero() {
   const [taskList, setTaskList] = useState([]);
 
   const addTaskToList = (newTask) => {
-    setTaskList([...taskList, newTask]);
+    taskList.find((item) => item.text === newTask.text)
+      ? alert("Task already exists")
+      : setTaskList([...taskList, newTask]);
   };
 
   const handleDelete = (id) => {
