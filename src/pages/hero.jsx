@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import AddTask from "./addTask";
-import TaskList from "./taskList";
-import Complete from "./complete";
+import AddTask from "../components/addTask";
+import TaskList from "../components/taskList";
+import Complete from "../components/complete";
 
 export default function Hero() {
   const [taskList, setTaskList] = useState([]);
