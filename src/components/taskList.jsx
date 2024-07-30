@@ -5,7 +5,10 @@ export default function TaskList({ list, deleteList, updateList }) {
     updateList(item.id, { ...item, complete: !item.complete });
   };
 
-  const handleUpdate = (id) => {};
+  const handleUpdate = (item) => {
+    const newText = prompt("Enter update task", item.text);
+    updateList(item.id, { ...item, text: newText });
+  };
 
   const handleDelete = (id) => {
     deleteList(id);
@@ -34,7 +37,7 @@ export default function TaskList({ list, deleteList, updateList }) {
               </div>
 
               <div className="flex gap-2">
-                <Button type={"edit"} handle={handleUpdate} />
+                <Button type={"edit"} handle={() => handleUpdate(item)} />
                 <Button type={"delete"} handle={() => handleDelete(item.id)} />
               </div>
             </label>

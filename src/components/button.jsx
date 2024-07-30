@@ -3,7 +3,7 @@ export default function Button({ type, handle }) {
   return (
     <>
       {isEdit ? (
-        <button className="btn btn-warning  btn-sm">
+        <button className="btn btn-warning  btn-sm" onClick={handle}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.2rem"
