@@ -1,29 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AddTask from "../components/addTask";
 import TaskList from "../components/taskList";
 import Complete from "../components/complete";
 
 export default function Hero() {
   const [taskList, setTaskList] = useState([]);
+
   const addTaskToList = (newTask) => {
-    if (newTask.text !== "") {
-      return setTaskList([...taskList, newTask]);
-    }
+    setTaskList([...taskList, newTask]);
   };
 
-  const handleDelete = (index) => {
-    const updatedTasks = [...taskList];
-    updatedTasks.splice(index, 1);
-    setTaskList(updatedTasks);
+  const handleDelete = (id) => {
+    setTaskList((taskList) => taskList.filter((item) => item.id != id));
   };
 
-  const handleUpdate = (index, newValue) => {
-    const updatedTasks = [...taskList];
-    updatedTasks[index].text = newValue;
-    setTaskList(updatedTasks);
-  };
-
-  useEffect(() => {}, [taskList]);
+  const handleUpdate = (id) => {};
 
   return (
     <div className="min-h-screen bg-base-200 px-6">
