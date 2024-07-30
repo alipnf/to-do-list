@@ -1,7 +1,9 @@
 import Button from "./button";
 
 export default function TaskList({ list, deleteList, updateList }) {
-  const handleCheckboxChange = (index) => {};
+  const handleChecked = (item) => {
+    updateList(item.id, { ...item, complete: !item.complete });
+  };
 
   const handleUpdate = (id) => {};
 
@@ -19,8 +21,7 @@ export default function TaskList({ list, deleteList, updateList }) {
                 <input
                   type="checkbox"
                   className="checkbox"
-                  onChange={() => handleCheckboxChange(item.id)}
-                  // checked={item.checked === true}
+                  onChange={() => handleChecked(item)}
                 />
                 <span
                   style={{

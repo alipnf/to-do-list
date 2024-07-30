@@ -14,7 +14,11 @@ export default function Hero() {
     setTaskList((taskList) => taskList.filter((item) => item.id != id));
   };
 
-  const handleUpdate = (id) => {};
+  const handleUpdate = (id, update) => {
+    setTaskList((items) =>
+      items.map((item) => (item.id === id ? update : item)),
+    );
+  };
 
   return (
     <div className="min-h-screen bg-base-200 px-6">
